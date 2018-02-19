@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+
+import Layout from './hoc/Layout/Layout';
+
+import NotFound from './components/NotFound/NotFound';
+
 import logo from './logo.svg';
 import './App.css';
-
-import Layout from './hoc/Layout/Layout'
 
 class App extends Component {
   render() {
     return (
-      <Layout />
+      <div>
+        <Switch>
+          <Route exact path="/" component={Layout} />
+          <Route exact path="/index.html" component={Layout} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
